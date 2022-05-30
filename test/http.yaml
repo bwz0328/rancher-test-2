@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rancher-http-nginx
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rancher-http-nginx
+  template:
+    metadata:
+      labels:
+        app: rancher-http-nginx
+        test: aaabvbccc
+    spec:
+      containers:
+      - image: nginx
+        name: rancher-http-nginx
+        ports:
+        - containerPort: 80
+          name: http
